@@ -1,0 +1,21 @@
+.aurora-bg { position: relative; }
+.aurora-bg::before, .aurora-bg::after {
+content: ""; position: absolute; inset: -20%; filter: blur(60px); opacity: .6; z-index: -1;
+background: radial-gradient(45rem 30rem at 80% -10%, rgba(16,185,129,.35), transparent),
+radial-gradient(40rem 30rem at -10% -10%, rgba(6,182,212,.35), transparent);
+}
+
+
+/* Subtle glowing borders */
+.glow-border { position: relative; }
+.glow-border::after {
+content: ""; position: absolute; inset: 0; border-radius: 1.25rem; pointer-events:none;
+background: linear-gradient(120deg, rgba(16,185,129,.35), transparent 40%, rgba(6,182,212,.35));
+mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+-webkit-mask-composite: xor; mask-composite: exclude; padding: 1px; opacity:.6;
+}
+
+
+/* Accent rule for section headers */
+.rule-accent { position: relative; padding-left: 1rem; }
+.rule-accent::before { content:""; position:absolute; left:0; top:.55em; width:.5rem; height:.2rem; border-radius:9999px; background:linear-gradient(90deg,#10b981,#06b6d4); }
