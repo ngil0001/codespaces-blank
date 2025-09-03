@@ -2,9 +2,6 @@
 	import '../app.css';
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
-	import Hero from '$lib/components/Hero.svelte';
-	import SideBar from '$lib/components/SideBar.svelte';
-	import Skills from '$lib/components/Skills.svelte';
 	import { onMount } from 'svelte';
 	onMount(() => {
 		const saved = localStorage.getItem('theme');
@@ -20,14 +17,11 @@
 	<title>Noah Gilkey - Software Engineer</title>
 	<meta name="description" content="Portfolio, projects, and contact." />
 </svelte:head>
-<div class="min-h-screen grid md:grid-cols-[280px_1fr]">
-	<SideBar />
-	<div class="min-h-dvh flex flex-col">
-		<Footer />
-	</div>
+<a href="#main-content" class="skip-link">Skip to content</a>
+<Header />
+<div class="min-h-screen flex flex-col bg-white dark:bg-neutral-950 transition-colors">
+	<main id="main-content" class="flex-1 pt-20" aria-label="Main content">
+		{@render children?.()}
+	</main>
+	<Footer />
 </div>
-	
-
-
-
-{@render children?.()}

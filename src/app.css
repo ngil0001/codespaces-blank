@@ -1,10 +1,53 @@
-@import 'tailwindcss';
-@plugin '@tailwindcss/forms';
-@plugin '@tailwindcss/typography';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+/* Custom theme layers come after default utilities so overrides work */
+@import './lib/styles/maintheme.css';
+@import './lib/styles/utilities.css';
 
 :root { scroll-behavior: smooth; }
 :focus-visible { outline: 2px solid rgb(16 185 129 / 0.7); outline-offset: 2px; }
+
+html { font-feature-settings: "ss01" "cv02"; }
+body {
+  background-color: #fff;
+  color: #171717;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition-property: color, background-color;
+  transition-duration: 300ms;
+  transition-timing-function: ease;
+}
+/* Base typography */
+body, button, input, select, textarea { font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif; }
+h1,h2,h3,h4,h5,h6 { font-weight:600; letter-spacing:-.02em; }
+p { line-height:1.6; }
+
+/* List reset */
+ul,ol { list-style:none; margin:0; padding:0; }
+
+/* Smooth heading anchoring */
+section { scroll-margin-top:6rem; }
+
+/* Subtle page background gradient */
+html { background:radial-gradient(circle at 70% 20%, rgba(16,185,129,.06), transparent 60%), radial-gradient(circle at 15% 80%, rgba(6,182,212,.05), transparent 65%); }
+.dark html { background:radial-gradient(circle at 70% 20%, rgba(16,185,129,.12), transparent 60%), radial-gradient(circle at 15% 80%, rgba(6,182,212,.10), transparent 65%), #0a0a0a; }
+
+/* Refine anchor defaults */
+a { text-underline-offset:3px; }
+a:hover { text-decoration:underline; }
+
+/* Prevent hero section extra outer spacing on small screens */
+.section:first-of-type { padding-top:2rem; }
+@media (prefers-color-scheme: dark) {
+  body {
+	background-color: #0a0a0a;
+	color: #f3f3f3;
+  }
+}
+
+/* Theme transition helper */
+.theme-transition * { transition: background-color .3s ease, color .3s ease, border-color .3s ease; }
+
+@media (prefers-reduced-motion: reduce) {
+	* { animation: none !important; transition: none !important; }
+}
